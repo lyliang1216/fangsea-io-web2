@@ -1,0 +1,155 @@
+@import 'variable';
+
+@font-face {
+    font-family: 'offside';
+    src: url('../fonts/Offside-Regular.ttf');
+}
+@font-face {
+    font-family: 'openSans';
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+* {
+    font-family: "openSans" !important;
+}
+
+.offside-font {
+    font-family: 'offside' !important;
+}
+
+html, body {
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: 0.5px;
+    height: 100vh;
+    margin: 0;
+    line-height: 1.5;
+}
+
+a, a:hover, a:focus, a:visited {
+    color: #000;
+}
+
+/****************pc body****************/
+#components-layout-top {
+    padding-top: 70px;
+    min-width: @max-width;
+
+    .ant-layout-header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        right: 0;
+        z-index: 1061;
+        height: 70px;
+        line-height: 70px;
+        padding: 0;
+        background: #353942!important;
+    }
+    .ant-menu-dark, .ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+        background: #353942!important;
+    }
+
+    .ant-layout-sider {
+        margin-bottom: 26px;
+        min-height: 785px;
+    }
+
+    .content {
+        background: #fff;
+        padding: 24px;
+        min-height: e("calc(100vh - 179px)")
+    }
+
+    /*区号蒙层*/
+
+    .my-code {
+        pointer-events: none;
+        width: 68px;
+        height: 38px;
+        background-color: #ffffff;
+        position: absolute;
+        left: 1px;
+        top: -9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+    }
+
+    .ant-menu-dark .ant-menu-item:hover,
+    .ant-menu-dark .ant-menu-item-active {
+        color: #cecece;
+        a {
+            color: #cecece;
+        }
+    }
+}
+
+/****************响应宽度****************/
+@media screen and (max-width: @max-width) {
+    html {
+        font-size: 625%;
+    }
+
+    .ant-drawer-content, .ant-drawer-header {
+        background: #fff !important;
+    }
+
+    #components-layout-top {
+        width: 100vw;
+        min-width: 100vw;
+        overflow: hidden;
+        padding-top: 0;
+
+        .ant-layout-header {
+            position: static;
+        }
+        .section {
+            min-height: e("calc(100vh - 315px)")
+        }
+    }
+}
+
+/****************抽屉动画****************/
+.drawer-containel-left {
+    position: fixed;
+    animation: move-left 150ms cubic-bezier(0.9, 0, 0.3, 0.7);
+    -webkit-animation: move-left 150ms cubic-bezier(0.9, 0, 0.3, 0.7);
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    .ant-layout-header {
+        position: absolute!important;
+    }
+}
+
+@keyframes move-left {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: -85vw;
+    }
+}
+
+.drawer-containel-right {
+    position: fixed;
+    animation: move-right 150ms cubic-bezier(0.9, 0, 0.3, 0.7);
+    -webkit-animation: move-right 150ms cubic-bezier(0.9, 0, 0.3, 0.7);
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    .ant-layout-header {
+        position: absolute!important;
+    }
+}
+
+@keyframes move-right {
+    0% {
+        right: -85vw;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+
+
